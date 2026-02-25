@@ -352,9 +352,14 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
 
 // Simple markdown parser for rendering content
 function parseMarkdown(content: string): string {
-  // Remove the duplicate title and date line at the start
+  // Remove the duplicate title, date, and author line at the start
   let processed = content
-    .replace(/^.+\n\s*(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d+,?\s+\d{4}.*?\n*/i, '')
+    // Remove title line
+    .replace(/^[^\n]+\n\s*/, '')
+    // Remove date line (with optional "· George" or "· X min read")
+    .replace(/^(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d+,?\s+\d{4}[^\n]*\n*/i, '')
+    // Remove any standalone "· George" or "George" line
+    .replace(/^[·\s]*George\s*\n*/i, '')
     .trim()
 
   // Process line by line for better control
