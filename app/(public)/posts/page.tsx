@@ -92,7 +92,7 @@ export default function BlogPage() {
                     </div>
 
                     {/* Date & Read time */}
-                    <div className="mb-4 flex items-center gap-4 font-mono text-xs text-muted-foreground">
+                    <div className="mb-4 flex items-center gap-4 font-mono text-xs text-muted-foreground pr-24 sm:pr-28">
                       <span className="flex items-center gap-1.5">
                         <Calendar className="h-3.5 w-3.5" />
                         {post.date}

@@ -97,7 +97,7 @@ export function BlogPostsGrid() {
 
               <div
                 className={cn(
-                  "mb-5 flex items-center gap-4 font-mono text-xs text-muted-foreground",
+                  "mb-5 flex items-center gap-4 font-mono text-xs text-muted-foreground pr-24 sm:pr-28",
                   post.highlight && "mt-10",
                 )}
               >
