@@ -9,10 +9,9 @@ import { ThemeChanger } from "./theme-changer"
 import Link from "next/link"
 
 const navItems = [
-  { label: "Home", href: "/" },
+  { label: "Terminal", href: "/" },
   { label: "Blog", href: "/blog" },
   { label: "About", href: "/about" },
-  { label: "Artifacts", href: "/artifacts" },
 ]
 
 const socialLinks = [
