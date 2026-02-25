@@ -12,7 +12,9 @@ export function HeroSection() {
   const [isMuted, setIsMuted] = useState(true)
   const videoRef = useRef<HTMLVideoElement>(null)
 
-  const toggleMute = () => {
+  const toggleMute = (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
     if (videoRef.current) {
       videoRef.current.muted = !videoRef.current.muted
       setIsMuted(videoRef.current.muted)
@@ -108,8 +110,9 @@ export function HeroSection() {
               
               {/* Sound indicator - tap to unmute */}
               <button
+                type="button"
                 onClick={toggleMute}
-                className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 p-2 rounded-full bg-black/50 backdrop-blur-sm text-white hover:bg-black/70 transition-colors"
+                className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 p-2 rounded-full bg-black/50 backdrop-blur-sm text-white hover:bg-black/70 transition-colors z-10"
                 aria-label={isMuted ? "Unmute" : "Mute"}
               >
                 {isMuted ? (
