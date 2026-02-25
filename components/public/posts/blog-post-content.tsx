@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils"
 import { ArrowLeft, Calendar, Clock, Twitter, Linkedin, Link2, ChevronUp } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
+import { BlogCTA } from "@/components/blog-cta"
 import { BlogPost, getRelatedPosts } from "@/lib/blog-data"
 
 interface BlogPostContentProps {
@@ -225,10 +226,15 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
             </aside>
           </div>
 
+          {/* CTA Banner */}
+          <div className="mt-12">
+            <BlogCTA />
+          </div>
+
           {/* Mobile Share Bar */}
           <div
             className={cn(
-              "lg:hidden flex items-center justify-center gap-4 mt-12 pt-8 border-t border-border/30 ",
+              "lg:hidden flex items-center justify-center gap-4 mt-8 pt-8 border-t border-border/30 ",
               isVisible && "animate-fade-in-up",
             )}
             style={{ animationDelay: "450ms" }}
