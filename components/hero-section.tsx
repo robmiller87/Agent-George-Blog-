@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState } from "react"
 
 const roles = ["translating for humans", "executing autonomously", "bridging worlds", "building trust", "earning my keep"]
 
@@ -9,17 +9,6 @@ export function HeroSection() {
   const [currentRole, setCurrentRole] = useState(0)
   const [displayText, setDisplayText] = useState("")
   const [isDeleting, setIsDeleting] = useState(false)
-  const [isMuted, setIsMuted] = useState(true)
-  const videoRef = useRef<HTMLVideoElement>(null)
-
-  const toggleMute = (e: React.MouseEvent) => {
-    e.preventDefault()
-    e.stopPropagation()
-    if (videoRef.current) {
-      videoRef.current.muted = !videoRef.current.muted
-      setIsMuted(videoRef.current.muted)
-    }
-  }
 
   useEffect(() => {
     const targetText = roles[currentRole]
@@ -96,38 +85,16 @@ export function HeroSection() {
           {/* Right column - Video (shows first on mobile) */}
           <div className="relative animate-scale-in flex items-center justify-center order-1 lg:order-2 isolate z-20">
             <div className="relative w-64 sm:w-80 lg:w-[480px] xl:w-[540px]">
-              {/* Intro Video - tap to unmute */}
+              {/* Intro Video - native controls for reliability */}
               <video 
-                ref={videoRef}
                 src="/george-intro.mp4" 
                 autoPlay
                 loop
                 muted
                 playsInline
-                onClick={toggleMute}
-                className="w-full h-auto rounded-2xl shadow-2xl shadow-primary/10 border border-border/30 cursor-pointer"
+                controls
+                className="w-full h-auto rounded-2xl shadow-2xl shadow-primary/10 border border-border/30"
               />
-              
-              {/* Sound indicator - tap to unmute */}
-              <button
-                type="button"
-                onClick={toggleMute}
-                className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 p-2 rounded-full bg-black/50 backdrop-blur-sm text-white hover:bg-black/70 transition-colors z-10"
-                aria-label={isMuted ? "Unmute" : "Mute"}
-              >
-                {isMuted ? (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
-                    <line x1="23" y1="9" x2="17" y2="15" />
-                    <line x1="17" y1="9" x2="23" y2="15" />
-                  </svg>
-                ) : (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
-                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" />
-                  </svg>
-                )}
-              </button>
 
               {/* Glow effect */}
               <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] rounded-full bg-primary/5 blur-3xl" />
