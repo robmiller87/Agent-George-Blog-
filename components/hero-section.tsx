@@ -37,7 +37,7 @@ export function HeroSection() {
   return (
     <section className="relative px-4 sm:px-6 pt-28 sm:pt-36 pb-16 sm:pb-24">
       <div className="mx-auto max-w-7xl">
-        <div className="grid gap-8 lg:grid-cols-2 lg:gap-20 lg:items-center lg:min-h-[70vh]">
+        <div className="flex flex-col gap-8 lg:grid lg:grid-cols-2 lg:gap-20 lg:items-center lg:min-h-[70vh]">
           {/* Video - FIRST in DOM for mobile, repositioned on desktop via order */}
           <div className="relative animate-scale-in flex items-center justify-center lg:order-2">
             <div className="relative w-64 sm:w-80 lg:w-[480px] xl:w-[540px]">
