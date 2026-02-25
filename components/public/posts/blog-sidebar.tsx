@@ -1,27 +1,51 @@
 "use client"
 
-import type React from "react"
-
 import { useState, useEffect, useRef } from "react"
 import { cn } from "@/lib/utils"
-import { Mail, Rss, Search, Tag, TrendingUp } from "lucide-react"
+import { Rss, Search, Tag, TrendingUp } from "lucide-react"
 import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
+import { blogPosts } from "@/lib/blog-data"
+import { NewsletterForm } from "@/components/newsletter-form"
+
+// Generate categories from actual posts
+const categoryMap = blogPosts.reduce((acc, post) => {
+  acc[post.category] = (acc[post.category] || 0) + 1
+  return acc
+}, {} as Record<string, number>)
 
 const categories = [
-  { name: "All Posts", count: 12, slug: "all" },
-  { name: "AI & Machine Learning", count: 4, slug: "ai" },
-  { name: "Frontend", count: 3, slug: "frontend" },
-  { name: "Systems & DevOps", count: 3, slug: "systems" },
-  { name: "Design", count: 2, slug: "design" },
+  { name: "All Posts", count: blogPosts.length, slug: "all" },
+  ...Object.entries(categoryMap)
+    .sort((a, b) => b[1] - a[1])
+    .map(([slug, count]) => ({
+      name: slug.charAt(0).toUpperCase() + slug.slice(1),
+      count,
+      slug,
+    }))
 ]
 
-const popularTags = ["nextjs", "react", "typescript", "llm", "rust", "linux", "python", "tailwind", "wasm", "rag"]
+// Generate tags from actual posts
+const tagMap = blogPosts.reduce((acc, post) => {
+  post.tags.forEach(tag => {
+    acc[tag] = (acc[tag] || 0) + 1
+  })
+  return acc
+}, {} as Record<string, number>)
 
-export function BlogSidebar() {
+const popularTags = Object.entries(tagMap)
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 10)
+  .map(([tag]) => tag)
+
+interface BlogSidebarProps {
+  onCategoryChange?: (category: string) => void
+  onSearch?: (query: string) => void
+  activeCategory?: string
+}
+
+export function BlogSidebar({ onCategoryChange, onSearch, activeCategory = "all" }: BlogSidebarProps) {
   const [isVisible, setIsVisible] = useState(false)
-  const [activeCategory, setActiveCategory] = useState("all")
-  const [email, setEmail] = useState("")
+  const [searchQuery, setSearchQuery] = useState("")
   const sidebarRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -41,10 +65,9 @@ export function BlogSidebar() {
     return () => observer.disconnect()
   }, [])
 
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Handle subscription
-    setEmail("")
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value)
+    onSearch?.(e.target.value)
   }
 
   return (
@@ -56,6 +79,8 @@ export function BlogSidebar() {
           <Input
             type="search"
             placeholder="Search articles..."
+            value={searchQuery}
+            onChange={handleSearch}
             className="pl-10 bg-card/40 border-border/50 focus:border-primary/50"
           />
         </div>
@@ -71,7 +96,7 @@ export function BlogSidebar() {
           {categories.map((category) => (
             <button
               key={category.slug}
-              onClick={() => setActiveCategory(category.slug)}
+              onClick={() => onCategoryChange?.(category.slug)}
               className={cn(
                 "flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm transition-all duration-300",
                 activeCategory === category.slug
@@ -105,37 +130,14 @@ export function BlogSidebar() {
       </div>
 
       {/* Newsletter */}
-      <div
-        className={cn(
-          "rounded-xl border border-border/50 bg-card/40 glass p-6 opacity-0",
-          isVisible && "animate-fade-in-up stagger-3",
-        )}
-      >
-        <div className="flex items-center gap-2 mb-3">
-          <Mail className="h-4 w-4 text-primary" />
-          <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">Newsletter</h3>
-        </div>
-        <p className="text-sm text-muted-foreground mb-4">
-          Get notified about new articles and experiments. No spam, unsubscribe anytime.
-        </p>
-        <form onSubmit={handleSubscribe} className="space-y-3">
-          <Input
-            type="email"
-            placeholder="your@email.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="bg-background/50 border-border/50 focus:border-primary/50"
-          />
-          <Button type="submit" className="w-full font-mono text-xs uppercase tracking-wider">
-            Subscribe
-          </Button>
-        </form>
+      <div className={cn("opacity-0", isVisible && "animate-fade-in-up stagger-3")}>
+        <NewsletterForm />
       </div>
 
       {/* RSS Feed */}
       <div className={cn("opacity-0", isVisible && "animate-fade-in-up stagger-4")}>
         <a
-          href="/rss.xml"
+          href="/feed.xml"
           className="flex items-center justify-center gap-2 rounded-lg border border-border/50 bg-card/40 px-4 py-3 font-mono text-xs text-muted-foreground transition-all duration-300 hover:border-primary/50 hover:bg-primary/10 hover:text-primary"
         >
           <Rss className="h-4 w-4" />

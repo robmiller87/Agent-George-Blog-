@@ -40,7 +40,7 @@ export function BlogList() {
           )}
           style={{ animationDelay: `${index * 80 + 100}ms` }}
         >
-          <Link href={`/blog/${post.slug}`} className="absolute inset-0 z-10">
+          <Link href={`/posts/${post.slug}`} className="absolute inset-0 z-10">
             <span className="sr-only">Read {post.title}</span>
           </Link>
 
