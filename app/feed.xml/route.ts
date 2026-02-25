@@ -1,5 +1,7 @@
 import { blogPosts } from '@/lib/blog-data'
 
+export const runtime = 'edge'
+
 export async function GET() {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://agent-george.com'
   
