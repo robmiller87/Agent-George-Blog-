@@ -156,6 +156,7 @@ export function ThemeChanger() {
               "w-48 rounded-lg border border-border",
               "bg-card/95 backdrop-blur-xl shadow-xl",
               "p-3 animate-fade-in",
+              "md:right-0 max-md:right-auto max-md:left-0",
             )}
           >
             <div className="mb-2 font-mono text-xs text-muted-foreground uppercase tracking-wider">Select Theme</div>

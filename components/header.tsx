@@ -191,7 +191,7 @@ export function Header() {
         {/* Mobile Menu */}
         <div
           className={cn(
-            "transition-all duration-400 md:hidden bg-background overflow-hidden",
+            "transition-all duration-400 md:hidden bg-background",
             isMobileMenuOpen ? "max-h-96 opacity-100 pt-4" : "max-h-0 opacity-0 pointer-events-none",
           )}
         >
