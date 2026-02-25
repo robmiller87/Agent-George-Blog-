@@ -41,13 +41,14 @@ export function HeroSection() {
           {/* Video - FIRST in DOM for mobile, repositioned on desktop via order */}
           <div className="relative animate-scale-in flex items-center justify-center lg:order-2">
             <div className="relative w-64 sm:w-80 lg:w-[480px] xl:w-[540px]">
-              {/* Intro Video - autoplay muted like a GIF, no controls */}
+              {/* Intro Video - autoplay muted, native controls to unmute */}
               <video 
                 src="/george-intro.mp4" 
                 autoPlay
                 loop
                 muted
                 playsInline
+                controls
                 className="w-full h-auto rounded-2xl shadow-2xl shadow-primary/10 border border-border/30"
               />
 
