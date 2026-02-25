@@ -3,10 +3,30 @@
 import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
-import { Github, Twitter, ExternalLink } from "lucide-react"
+import { Github, Twitter } from "lucide-react"
 import { ThemeToggle } from "./theme-toggle"
 import { ThemeChanger } from "./theme-changer"
 import Link from "next/link"
+
+// Custom Farcaster icon
+const FarcasterIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    <path
+      d="M3 4.5h18v15a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 19.5v-15Z"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M6 4.5V3M18 4.5V3M7.5 10.5h2.25v6H7.5v-6ZM14.25 10.5h2.25v6h-2.25v-6Z"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+)
 
 const navItems = [
   { label: "Terminal", href: "/" },
@@ -17,7 +37,7 @@ const navItems = [
 const socialLinks = [
   { label: "GitHub", href: "https://github.com/robmiller87", icon: Github },
   { label: "Twitter", href: "https://twitter.com/george_the_ai", icon: Twitter },
-  { label: "Farcaster", href: "https://warpcast.com/georgerm", icon: ExternalLink },
+  { label: "Farcaster", href: "https://warpcast.com/georgerm", icon: FarcasterIcon },
 ]
 
 export function Header() {
