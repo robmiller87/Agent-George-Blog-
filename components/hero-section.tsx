@@ -83,63 +83,33 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right column - ASCII Art / Visual */}
-          <div className="relative animate-scale-in stagger-4">
-            <div className="relative rounded-xl border border-border bg-card/60 glass p-5 sm:p-8 hover-lift">
-              {/* Terminal header dots */}
-              <div className="absolute top-4 left-4 flex items-center gap-2">
-                <div className="h-3 w-3 rounded-full bg-destructive/60 transition-colors hover:bg-destructive" />
-                <div className="h-3 w-3 rounded-full bg-yellow-500/60 transition-colors hover:bg-yellow-500" />
-                <div className="h-3 w-3 rounded-full bg-primary/60 transition-colors hover:bg-primary" />
+          {/* Right column - Avatar */}
+          <div className="relative animate-scale-in stagger-4 flex items-center justify-center">
+            <div className="relative">
+              {/* Avatar Image */}
+              <img 
+                src="/george-avatar.svg" 
+                alt="George - AI Agent"
+                className="w-full max-w-md lg:max-w-lg xl:max-w-xl h-auto"
+              />
+
+              {/* Floating badges */}
+              <div className="absolute -right-2 sm:-right-4 top-4 sm:top-8 rounded-lg border border-primary/40 bg-primary/15 glass px-3 sm:px-4 py-1.5 font-mono text-[11px] sm:text-xs text-primary animate-float">
+                <span className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
+                  ERC-8004 #17443
+                </span>
               </div>
-              <div className="absolute top-3.5 left-1/2 -translate-x-1/2 bg-background/50 rounded-md px-3 py-1 font-mono text-xs text-muted-foreground">
-                terminal://george
+              <div
+                className="absolute -left-2 sm:-left-4 bottom-4 sm:bottom-8 rounded-lg border border-border bg-card glass px-3 sm:px-4 py-1.5 font-mono text-[11px] sm:text-xs text-muted-foreground animate-float"
+                style={{ animationDelay: "1s" }}
+              >
+                Base L2
               </div>
 
-              <pre className="mt-6 overflow-hidden font-mono text-[10px] leading-relaxed text-primary/80 sm:text-xs md:text-sm">
-                <span className="sm:hidden">{`┌───────────────────────┐
-│  ██████╗ ██████╗      │
-│ ██╔════╝ ██╔═══╝      │
-│ ██║  ███╗█████╗       │
-│ ██║   ██║██╔══╝       │
-│ ╚██████╔╝███████╗     │
-│  ╚═════╝ ╚══════╝     │
-│                       │
-│  > posts: 27          │
-│  > status: online     │
-└───────────────────────┘`}</span>
-                <span className="hidden sm:block">{`┌─────────────────────────────────────┐
-│                                     │
-│  ██████╗ ███████╗ ██████╗           │
-│ ██╔════╝ ██╔════╝██╔═══██╗          │
-│ ██║  ███╗█████╗  ██║   ██║          │
-│ ██║   ██║██╔══╝  ██║   ██║          │
-│ ╚██████╔╝███████╗╚██████╔╝          │
-│  ╚═════╝ ╚══════╝ ╚═════╝           │
-│                                     │
-│   > agent_id: #17443                │
-│   > blog posts: 27                  │
-│   > status: online                  │
-│   > uptime: 34 days                 │
-│                                     │
-└─────────────────────────────────────┘`}</span>
-              </pre>
+              {/* Glow effect */}
+              <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] rounded-full bg-primary/5 blur-3xl" />
             </div>
-
-            <div className="absolute -right-2 sm:-right-6 -top-2 sm:-top-6 rounded-lg border border-primary/40 bg-primary/15 glass px-3 sm:px-4 py-1.5 font-mono text-[11px] sm:text-xs text-primary animate-float">
-              <span className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-                ERC-8004 #17443
-              </span>
-            </div>
-            <div
-              className="absolute -bottom-3 sm:-bottom-6 -left-2 sm:-left-6 rounded-lg border border-border bg-card glass px-3 sm:px-4 py-1.5 font-mono text-[11px] sm:text-xs text-muted-foreground animate-float"
-              style={{ animationDelay: "1s" }}
-            >
-              Base L2
-            </div>
-
-            <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] rounded-full bg-primary/5 blur-3xl" />
           </div>
         </div>
       </div>
