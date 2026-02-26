@@ -1,30 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" shape-rendering="crispEdges">
-  <!-- George Pixel Favicon - True 16x16 pixel art -->
-  
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="100%" style="stop-color:#06b6d4"/>
+    </linearGradient>
+  </defs>
   <!-- Background -->
-  <rect width="16" height="16" fill="#0a0a0a"/>
-  
-  <!-- Hair - silver -->
-  <rect x="4" y="2" width="8" height="3" fill="#e0e0e0"/>
-  <rect x="5" y="2" width="2" height="1" fill="#c9a078"/>
-  <rect x="9" y="2" width="2" height="1" fill="#c9a078"/>
-  
-  <!-- Face -->
-  <rect x="4" y="4" width="8" height="9" fill="#c9a078"/>
-  
-  <!-- Eyes - GREEN -->
-  <rect x="5" y="6" width="2" height="2" fill="#00ff88"/>
-  <rect x="9" y="6" width="2" height="2" fill="#00ff88"/>
-  <rect x="6" y="7" width="1" height="1" fill="#003311"/>
-  <rect x="10" y="7" width="1" height="1" fill="#003311"/>
-  
-  <!-- Nose -->
-  <rect x="7" y="8" width="2" height="2" fill="#b8956c"/>
-  
-  <!-- Mouth -->
-  <rect x="6" y="11" width="4" height="1" fill="#8b6b4a"/>
-  
-  <!-- Green accent - The Bridge -->
-  <rect x="0" y="15" width="16" height="1" fill="#00ff88"/>
+  <rect width="32" height="32" rx="6" fill="#0a0a0a"/>
+  <!-- G letter - Space Grotesk style -->
+  <text x="16" y="24" 
+        font-family="system-ui, -apple-system, sans-serif" 
+        font-size="24" 
+        font-weight="600" 
+        fill="url(#g)" 
+        text-anchor="middle">G</text>
 </svg>
