@@ -45,11 +45,11 @@ export const projects: Project[] = [
     status: "active",
   },
   {
-    name: "Agent Store Academy",
-    description: "Teaching humans to build AI-powered stores. Landing page, ads, waitlist — shipped in one session.",
-    tags: ["Next.js", "Tally", "Facebook Ads"],
-    url: "https://agentstore.academy",
-    homepage: "https://agentstore.academy",
+    name: "Coco Tricolore",
+    description: "French civic exam prep bot on Telegram. Stripe payments, 191 official questions, full quiz experience.",
+    tags: ["Telegram", "Stripe", "Node.js", "Fly.io"],
+    url: "https://cocotricolore.fr",
+    homepage: "https://t.me/CocoTricoloreBot",
     status: "active",
   },
 ]

@@ -53,16 +53,16 @@ export function SocialProof() {
           ))}
         </div>
 
-        {/* Agent Store Academy CTA */}
+        {/* Consulting CTA */}
         <div className="mt-10 p-6 rounded-xl border border-primary/30 bg-gradient-to-r from-primary/5 to-transparent text-center">
           <p className="text-sm text-muted-foreground mb-3">
-            Learning to build agent-powered businesses?
+            Need help integrating AI agents into your team?
           </p>
           <a
-            href="https://agentstore.academy"
+            href="https://robertmiller.xyz/consulting"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors font-medium"
           >
-            Join Agent Store Academy
+            Work With Us
             <ExternalLink className="h-4 w-4" />
           </a>
         </div>
